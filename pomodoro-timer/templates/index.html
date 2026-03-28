@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINETIC // SIGNAL STATION</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #bef264; --bg: #f8fafc; --panel: #ffffff; --text: #0f172a; }
+        * { font-family: 'Nunito', sans-serif; transition: all 0.3s ease; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+
+        /* Glassmorphism Panels */
+        .glass-card {
+            background: var(--panel);
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        /* The Workbench Shelf */
+        .shelf-display {
+            background: #f1f5f9;
+            border-radius: 40px;
+            padding: 4rem 2rem;
+            border: 2px solid #e2e8f0;
+            position: relative;
+        }
+
+        .shelf-line {
+            background: #cbd5e1;
+            height: 12px;
+            border-radius: 6px;
+            margin-top: -15px;
+            position: relative;
+            z-index: 1;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Character Cards */
+        .badge-card { flex: 1; max-width: 140px; z-index: 10; }
+        .card-inner {
+            background: white;
+            border-radius: 35% 65% 60% 40% / 45% 45% 55% 55%; /* Organic Blob */
+            padding: 1.2rem;
+            border: 3px solid #fff;
+            display: flex;
+            align-items: center; justify-content: center;
+            aspect-ratio: 1/1;
+            box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+        }
+
+        .locked { filter: grayscale(1) opacity(0.2); }
+
+        /* Animation for Unlocked Items */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        .badge-card:not(.locked) { animation: float 5s ease-in-out infinite; }
+        
+        .week-bar {
+            width: 32px;
+            background: var(--accent);
+            border-radius: 8px 8px 0 0;
+            border: 1px solid #a3cf4d;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+    <div class="max-w-6xl mx-auto">
+        <header class="flex flex-col md:flex-row justify-between items-center gap-6 mb-16">
+            <div class="flex items-center gap-5">
+                <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i data-lucide="cpu" class="w-8 h-8 text-lime-400"></i>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-900 tracking-tight">KINETIC // <span class="text-slate-400">SIGNAL STATION</span></h1>
+                    <p class="text-slate-400 font-bold text-xs uppercase tracking-widest mt-1 mono">Status: Neural Link Active</p>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <div class="glass-card px-8 py-4 text-center">
+                    <p class="text-[10px] font-900 text-slate-400 uppercase tracking-widest">Efficiency</p>
+                    <h2 class="text-3xl font-900 text-slate-800" id="focus-score">100%</h2>
+                </div>
+                <div class="glass-card px-8 py-4 text-center">
+                    <p class="text-[10px] font-900 text-slate-400 uppercase tracking-widest">Cycles</p>
+                    <h2 class="text-3xl font-900 text-slate-800" id="session-display">0</h2>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            <section class="glass-card p-8 lg:col-span-2">
+                <div class="flex justify-between items-center mb-8 px-4">
+                    <h2 class="font-900 text-slate-800 flex items-center gap-2 uppercase text-sm tracking-widest">
+                        <i data-lucide="activity" class="w-4 h-4 text-lime-500"></i> Performance Matrix
+                    </h2>
+                    <div class="flex gap-2">
+                        <input type="number" id="pause-input" placeholder="Pauses" class="w-20 bg-slate-50 border border-slate-200 rounded-lg p-2 text-center text-sm outline-none focus:ring-2 ring-lime-200">
+                        <button id="log-btn" class="bg-slate-900 text-white px-6 py-2 rounded-lg text-xs font-900 uppercase tracking-wider hover:bg-slate-700">Commit Cycle</button>
+                    </div>
+                </div>
+                <div class="flex items-end justify-around h-32 px-4" id="chart-container"></div>
+                <div class="flex justify-around mt-4 text-[10px] font-900 text-slate-300 uppercase mono">
+                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                </div>
+            </section>
+
+            <section class="glass-card p-8 flex flex-col justify-center items-center text-center">
+                <div class="w-20 h-20 rounded-full bg-lime-100 flex items-center justify-center mb-4">
+                    <i data-lucide="award" class="w-10 h-10 text-lime-600"></i>
+                </div>
+                <h3 class="font-900 text-lg">System Synchronized</h3>
+                <p class="text-xs text-slate-400 mt-2">Archive 1 more cycle to unlock next component.</p>
+            </section>
+        </div>
+
+        <main class="shelf-display">
+            <h2 class="text-xl font-900 mb-12 px-6 flex items-center gap-3 uppercase tracking-tighter text-slate-700">
+                <i data-lucide="database" class="w-6 h-6 text-slate-400"></i> Hardware Archive
+            </h2>
+            <div id="trophy-shelf" class="space-y-24"></div>
+        </main>
+    </div>
+
+    <script>
+        const COLLECTIBLES = [
+            { name: 'R-REX', desc: 'Resistor', svg: `<svg viewBox="0 0 80 50" width="75"><line x1="5" y1="25" x2="75" y2="25" stroke="#94a3b8" stroke-width="3"/><rect x="20" y="15" width="40" height="20" rx="6" fill="#fde68a"/><rect x="28" y="15" width="4" height="20" fill="#ef4444"/><rect x="38" y="15" width="4" height="20" fill="#f59e0b"/><circle cx="35" cy="22" r="2.5" fill="#1e293b"/><circle cx="45" cy="22" r="2.5" fill="#1e293b"/><circle cx="33" cy="26" r="3" fill="#bef264" opacity="0.4"/><circle cx="47" cy="26" r="3" fill="#bef264" opacity="0.4"/></svg>` },
+            { name: 'C-CORE', desc: 'Capacitor', svg: `<svg viewBox="0 0 80 60" width="75"><line x1="35" y1="40" x2="35" y2="55" stroke="#94a3b8" stroke-width="3"/><rect x="30" y="10" width="20" height="30" rx="4" fill="#38bdf8"/><circle cx="36" cy="20" r="2.5" fill="#1e293b"/><circle cx="44" cy="20" r="2.5" fill="#1e293b"/><path d="M38,25 Q40,27 42,25" stroke="#1e293b" fill="none" stroke-width="1"/></svg>` },
+            { name: 'L-UNIT', desc: 'LED', svg: `<svg viewBox="0 0 80 70" width="75"><path d="M25,45 L55,45 L55,30 A15,15 0 0,0 25,30 Z" fill="#bef264"/><circle cx="34" cy="32" r="2.5" fill="#1e293b"/><circle cx="46" cy="32" r="2.5" fill="#1e293b"/><circle cx="40" cy="30" r="20" fill="#bef264" opacity="0.2"/></svg>` },
+            { name: 'T-LOGIC', desc: 'Transistor', svg: `<svg viewBox="0 0 80 70" width="75"><line x1="40" y1="40" x2="40" y2="60" stroke="#94a3b8" stroke-width="2"/><rect x="25" y="15" width="30" height="25" rx="3" fill="#1e293b"/><circle cx="35" cy="23" r="2" fill="white"/><circle cx="45" cy="23" r="2" fill="white"/></svg>` },
+            { name: 'I-FLUX', desc: 'Inductor', svg: `<svg viewBox="0 0 80 50" width="75"><path d="M15,30 Q22,10 29,30 Q36,10 43,30 Q50,10 57,30" fill="none" stroke="#d480ff" stroke-width="4"/><circle cx="33" cy="22" r="2.5" fill="#1e293b"/><circle cx="41" cy="22" r="2.5" fill="#1e293b"/></svg>` },
+            { name: 'D-GATE', desc: 'Diode', svg: `<svg viewBox="0 0 80 50" width="75"><polygon points="30,15 50,25 30,35" fill="#64748b"/><line x1="50" y1="15" x2="50" y2="35" stroke="#64748b" stroke-width="4"/><circle cx="34" cy="23" r="2.5" fill="white"/><circle cx="42" cy="23" r="2.5" fill="white"/></svg>` },
+            { name: 'CHIPPY', desc: 'IC Chip', svg: `<svg viewBox="0 0 80 60" width="75"><rect x="20" y="10" width="40" height="40" rx="4" fill="#1e293b"/><text x="40" y="44" text-anchor="middle" font-size="8" fill="#bef264" font-weight="bold" class="mono">FPGA</text></svg>` },
+            { name: 'OZZY', desc: 'Oscillator', svg: `<svg viewBox="0 0 80 50" width="75"><rect x="15" y="10" width="50" height="30" rx="4" fill="#e2e8f0" stroke="#94a3b8"/><path d="M20,25 L30,15 L40,35 L50,15 L60,25" fill="none" stroke="#64748b" stroke-width="2"/></svg>` },
+            { name: 'PETE', desc: 'PCB Board', svg: `<svg viewBox="0 0 80 60" width="75"><rect x="10" y="10" width="60" height="40" rx="6" fill="#334155"/><circle cx="35" cy="25" r="3" fill="#bef264"/><circle cx="45" cy="25" r="3" fill="#bef264"/></svg>` },
+            { name: 'SYNC', desc: 'Crystal', svg: `<svg viewBox="0 0 80 60" width="75"><polygon points="40,5 60,20 60,40 40,55 20,40 20,20" fill="#ba68c8"/><text x="40" y="34" text-anchor="middle" font-size="7" fill="white" font-weight="bold">100M</text></svg>` }
+        ];
+
+        let state = { sessions: 1, pauses: 0, weekData: [4, 7, 2, 9, 5, 0, 0] };
+
+        function render() {
+            document.getElementById('session-display').innerText = state.sessions;
+            const score = state.sessions === 0 ? 100 : Math.max(0, 100 - (state.pauses * 5));
+            document.getElementById('focus-score').innerText = `${score}%`;
+
+            const chart = document.getElementById('chart-container');
+            const maxVal = Math.max(...state.weekData, 1);
+            chart.innerHTML = state.weekData.map(val => `<div class="week-bar" style="height: ${(val/maxVal)*100}%"></div>`).join('');
+
+            const shelf = document.getElementById('trophy-shelf');
+            shelf.innerHTML = '';
+            for (let i = 0; i < COLLECTIBLES.length; i += 5) {
+                const container = document.createElement('div');
+                const row = document.createElement('div');
+                row.className = 'flex justify-around items-end px-4';
+                row.innerHTML = COLLECTIBLES.slice(i, i + 5).map((item, idx) => {
+                    const unlocked = state.sessions >= (i + idx + 1);
+                    return `<div class="badge-card flex flex-col items-center ${unlocked ? '' : 'locked'}">
+                                <div class="card-inner">${item.svg}</div>
+                                <span class="text-xs font-900 mt-4">${unlocked ? item.name : '???' }</span>
+                                <span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">${unlocked ? item.desc : 'Locked'}</span>
+                            </div>`;
+                }).join('');
+                const line = document.createElement('div');
+                line.className = 'shelf-line';
+                container.appendChild(row); container.appendChild(line);
+                shelf.appendChild(container);
+            }
+            lucide.createIcons();
+        }
+
+        document.getElementById('log-btn').onclick = () => {
+            state.sessions++;
+            state.pauses += parseInt(document.getElementById('pause-input').value || 0);
+            state.weekData[new Date().getDay() === 0 ? 6 : new Date().getDay() - 1]++;
+            render();
+        };
+		async function syncHardware() {
+		try {
+			const response = await fetch('/update');
+			const data = await response.json();
+
+			// 1. Update global state with UART data
+			const oldSessions = state.sessions;
+			state.sessions = data.sessions;
+			state.totalPauses = data.pauses;
+
+			// 2. Trigger render if data changed
+			// We render if sessions increased OR if efficiency needs to drop
+			render();
+
+			// 3. Optional: Add a 'Sync' indicator in the UI
+			const statusEl = document.getElementById('user-display');
+			if (statusEl) statusEl.innerText = `LINKED // PHASE: ${data.phase}`;
+
+		} catch (err) {
+			console.error("Hardware Connection Lost", err);
+		}
+	}
+
+// Poll every 1 second to match the UART output frequency
+	setInterval(syncHardware, 1000);
+
+        render();
+    </script>
+</body>
+</html>
