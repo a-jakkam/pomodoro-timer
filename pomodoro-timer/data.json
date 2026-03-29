@@ -1,78 +1,33 @@
 {
-    "total_sessions": 13,
+    "total_sessions": 4,
     "badges": [
         "First Focus",
-        "No Pause Session",
-        "No Pause Session",
-        "No Pause Session",
-        "No Pause Session",
         "No Pause Session"
     ],
     "history": [
         {
-            "time": "2026-03-28",
-            "efficiency": 80,
-            "pauses": 2
+            "time": "22:06",
+            "efficiency": 100
         },
         {
-            "time": "2026-03-28",
-            "efficiency": 70,
-            "pauses": 3
+            "time": "22:06",
+            "efficiency": 100
         },
         {
-            "time": "2026-03-28",
-            "efficiency": 100,
-            "pauses": 0
+            "time": "22:08",
+            "efficiency": 100
         },
         {
-            "time": "2026-03-28",
-            "efficiency": 90,
-            "pauses": 1
+            "time": "22:08",
+            "efficiency": 100
         },
         {
-            "time": "2026-03-28",
-            "efficiency": 80,
-            "pauses": 2
+            "time": "22:11",
+            "efficiency": 100
         },
         {
-            "time": "2026-03-28",
-            "efficiency": 100,
-            "pauses": 0
-        },
-        {
-            "time": "2026-03-28",
-            "efficiency": 70,
-            "pauses": 3
-        },
-        {
-            "time": "2026-03-28",
-            "efficiency": 80,
-            "pauses": 2
-        },
-        {
-            "time": "2026-03-28",
-            "efficiency": 100,
-            "pauses": 0
-        },
-        {
-            "time": "2026-03-28",
-            "efficiency": 90,
-            "pauses": 1
-        },
-        {
-            "time": "2026-03-28",
-            "efficiency": 100,
-            "pauses": 0
-        },
-        {
-            "time": "2026-03-28",
-            "efficiency": 90,
-            "pauses": 1
-        },
-        {
-            "time": "2026-03-28",
-            "efficiency": 100,
-            "pauses": 0
+            "time": "22:11",
+            "efficiency": 100
         }
     ]
 }
