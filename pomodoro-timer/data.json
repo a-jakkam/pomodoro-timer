@@ -6,28 +6,24 @@
     ],
     "history": [
         {
-            "time": "22:06",
+            "weekday": 6,
             "efficiency": 100
         },
         {
-            "time": "22:06",
-            "efficiency": 100
+            "weekday": 6,
+            "efficiency": 90
         },
         {
-            "time": "22:08",
-            "efficiency": 100
+            "weekday": 6,
+            "efficiency": 90
         },
         {
-            "time": "22:08",
-            "efficiency": 100
+            "weekday": 6,
+            "efficiency": 90
         },
         {
-            "time": "22:11",
-            "efficiency": 100
-        },
-        {
-            "time": "22:11",
-            "efficiency": 100
+            "weekday": 6,
+            "efficiency": 90
         }
     ]
 }
