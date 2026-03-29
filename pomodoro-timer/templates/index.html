@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KINETIC // SIGNAL STATION</title>
+    <title>ZERO // DRIFT</title>
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
@@ -79,7 +79,7 @@
                     <i data-lucide="cpu" class="w-8 h-8 text-lime-400"></i>
                 </div>
                 <div>
-                    <h1 class="text-3xl font-900 tracking-tight">KINETIC // <span class="text-slate-400">SIGNAL STATION</span></h1>
+                    <h1 class="text-3xl font-900 tracking-tight">ZERO // <span class="text-slate-400">DRIFT</span></h1>
                     <p class="text-slate-400 font-bold text-xs uppercase tracking-widest mt-1 mono">Status: Neural Link Active</p>
                 </div>
             </div>
@@ -183,32 +183,54 @@
             state.weekData[new Date().getDay() === 0 ? 6 : new Date().getDay() - 1]++;
             render();
         };
-		async function syncHardware() {
-		try {
-			const response = await fetch('/update');
-			const data = await response.json();
+// 		async function syncHardware() {
+// 		try {
+// 			const response = await fetch('/update');
+// 			const data = await response.json();
 
-			// 1. Update global state with UART data
-			const oldSessions = state.sessions;
-			state.sessions = data.sessions;
-			state.totalPauses = data.pauses;
+// 			// 1. Update global state with UART data
+// 			const oldSessions = state.sessions;
+// 			state.sessions = data.sessions;
+// 			state.totalPauses = data.pauses;
 
-			// 2. Trigger render if data changed
-			// We render if sessions increased OR if efficiency needs to drop
-			render();
+// 			// 2. Trigger render if data changed
+// 			// We render if sessions increased OR if efficiency needs to drop
+// 			render();
 
-			// 3. Optional: Add a 'Sync' indicator in the UI
-			const statusEl = document.getElementById('user-display');
-			if (statusEl) statusEl.innerText = `LINKED // PHASE: ${data.phase}`;
+// 			// 3. Optional: Add a 'Sync' indicator in the UI
+// 			const statusEl = document.getElementById('user-display');
+// 			if (statusEl) statusEl.innerText = `LINKED // PHASE: ${data.phase}`;
 
-		} catch (err) {
-			console.error("Hardware Connection Lost", err);
-		}
-	}
+// 		} catch (err) {
+// 			console.error("Hardware Connection Lost", err);
+// 		}
+// 	}
 
-// Poll every 1 second to match the UART output frequency
-	setInterval(syncHardware, 1000);
+// // Poll every 1 second to match the UART output frequency
+// 	setInterval(syncHardware, 1000);
+async function syncHardware() {
+    try {
+        const response = await fetch('/update');
+        const data = await response.json();
 
+        // 1. Update internal state with Simulated/UART data
+        state.sessions = data.sessions;
+        state.pauses = data.pauses;
+
+        // 2. Update the Dashboard Text
+        document.getElementById('session-display').innerText = data.sessions;
+        document.getElementById('focus-score').innerText = `${data.efficiency}%`;
+
+        // 3. Redraw the Archive Shelves
+        render();
+
+    } catch (err) {
+        console.error("Link to ZERO DRIFT Server Lost", err);
+    }
+}
+
+// Start polling immediately
+setInterval(syncHardware, 1000);
         render();
     </script>
 </body>
