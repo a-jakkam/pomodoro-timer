@@ -1,0 +1,13 @@
+0.7
+2020.2
+Oct 14 2022
+05:20:55
+E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.sim/sim_1/behav/xsim/glbl.v,1665704903,verilog,,,,glbl,,uvm,,,,,,
+E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sim_1/new/top_tb.sv,1774741228,systemVerilog,,,,uart_frame_tb,,uvm,,,,,,
+E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sources_1/new/buzzer_tone.sv,1774723903,systemVerilog,,E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sources_1/new/debounce_onepulse.sv,,buzzer_tone,,uvm,,,,,,
+E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sources_1/new/debounce_onepulse.sv,1774723581,systemVerilog,,E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sources_1/new/pomodoro_core.sv,,debounce_onepulse,,uvm,,,,,,
+E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sources_1/new/pomodoro_core.sv,1774728630,systemVerilog,,E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sources_1/new/pomodoro_top.sv,,pomodoro_core,,uvm,,,,,,
+,,,,E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sources_1/new/servo_pwm.sv,,pomodoro_top,,,,,,,,
+,,,,E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sources_1/new/sevenseg_mux8.sv,,servo_pwm,,,,,,,,
+,,,,E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sources_1/new/uart_tx.sv,,sevenseg_mux8,,,,,,,,
+,,,,E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.srcs/sim_1/new/top_tb.sv,,uart_tx,,,,,,,,

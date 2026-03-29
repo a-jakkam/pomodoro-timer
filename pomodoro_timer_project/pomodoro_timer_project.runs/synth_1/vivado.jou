@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Sun Mar 29 09:42:14 2026
+# Process ID: 34316
+# Current directory: E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.runs/synth_1
+# Command line: vivado.exe -log pomodoro_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pomodoro_top.tcl
+# Log file: E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.runs/synth_1/pomodoro_top.vds
+# Journal file: E:/Elky/UIUC/Courses/Spring2026/hardware-hackathon/pomodoro_timer_project/pomodoro_timer_project.runs/synth_1\vivado.jou
+# Running On: AHAHAHA, OS: Windows, CPU Frequency: 2611 MHz, CPU Physical cores: 10, Host memory: 16874 MB
+#-----------------------------------------------------------
+source pomodoro_top.tcl -notrace

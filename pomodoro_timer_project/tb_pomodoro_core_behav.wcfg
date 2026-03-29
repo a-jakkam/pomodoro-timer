@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_pomodoro_core_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_pomodoro_core" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="703.970 ns"></ZoomStartTime>
+      <ZoomEndTime time="786.471 ns"></ZoomEndTime>
+      <Cursor1Time time="720.770 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="243"></NameColumnWidth>
+      <ValueColumnWidth column_width="117"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="17" />
+   <wvobject fp_name="/tb_pomodoro_core/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/tick_1hz" type="logic">
+      <obj_property name="ElementShortName">tick_1hz</obj_property>
+      <obj_property name="ObjectShortName">tick_1hz</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/start_pulse" type="logic">
+      <obj_property name="ElementShortName">start_pulse</obj_property>
+      <obj_property name="ObjectShortName">start_pulse</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/pause_pulse" type="logic">
+      <obj_property name="ElementShortName">pause_pulse</obj_property>
+      <obj_property name="ObjectShortName">pause_pulse</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/skip_pulse" type="logic">
+      <obj_property name="ElementShortName">skip_pulse</obj_property>
+      <obj_property name="ObjectShortName">skip_pulse</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/demo_mode" type="logic">
+      <obj_property name="ElementShortName">demo_mode</obj_property>
+      <obj_property name="ObjectShortName">demo_mode</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/phase" type="array">
+      <obj_property name="ElementShortName">phase[1:0]</obj_property>
+      <obj_property name="ObjectShortName">phase[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/alarm_active" type="logic">
+      <obj_property name="ElementShortName">alarm_active</obj_property>
+      <obj_property name="ObjectShortName">alarm_active</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/running" type="logic">
+      <obj_property name="ElementShortName">running</obj_property>
+      <obj_property name="ObjectShortName">running</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/seconds_left" type="array">
+      <obj_property name="ElementShortName">seconds_left[15:0]</obj_property>
+      <obj_property name="ObjectShortName">seconds_left[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/phase_total_seconds" type="array">
+      <obj_property name="ElementShortName">phase_total_seconds[15:0]</obj_property>
+      <obj_property name="ObjectShortName">phase_total_seconds[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/work_sessions_done" type="array">
+      <obj_property name="ElementShortName">work_sessions_done[2:0]</obj_property>
+      <obj_property name="ObjectShortName">work_sessions_done[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/pause_count" type="array">
+      <obj_property name="ElementShortName">pause_count[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pause_count[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/reward_count" type="array">
+      <obj_property name="ElementShortName">reward_count[7:0]</obj_property>
+      <obj_property name="ObjectShortName">reward_count[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/dut/prev_state" type="array">
+      <obj_property name="ElementShortName">prev_state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">prev_state[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pomodoro_core/dut/state" type="array">
+      <obj_property name="ElementShortName">state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">state[2:0]</obj_property>
+   </wvobject>
+</wave_config>
